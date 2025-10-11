@@ -1,18 +1,20 @@
 @import url('./sidebar.css');
 
 body{
-    background-color: rgb(44, 69, 106);
-    color: white;
+    /* background-color: rgb(44, 69, 106); */
+    background-color: #eee;
+    color: black;
     display: grid;
     grid-template-areas: 
             "header header"
             "aside main"
             "footer footer";
-    grid-template-columns: 1.5fr 4fr;
+    grid-template-columns: 1fr 4fr;
     padding-bottom: 60px;
     box-sizing: border-box;
     margin: 5px;
     gap: 5px;
+    min-height: 100vh;
 }
 
 .no-sidemenu-body{
@@ -25,13 +27,10 @@ body{
 
 header{
     grid-area: header;
-    position:fixed;
     top: 0;
 }
-
 footer{
     grid-area: footer;
-    position: fixed;
     bottom: 0;
     justify-content: center;
 }
@@ -39,29 +38,38 @@ footer{
 header,
 footer{
     background-color: #222222;
+    position: fixed;
     left: 0;
+    color: #fff;
     width: 100%;
     height: 50px;
     display: flex;
     font-size: 1rem;
     align-items: center;
+    z-index: 1000;
+}
+
+
+.no-sidemenu-body main{
+    border: none;
 }
 
 main  {
     grid-area: main;
-    border-left: 1px solid rgb(44, 69, 106);
+    border-left: 1px solid rgb(200,200,200);
     box-shadow: inset 2px 0 2px -1px rgba(255,255,255,0.2) ;
 }
+
 aside {grid-area: aside;}
 
 main, aside{
     width: 100%;
-    height: 100%;
-    min-height: 75vh;
-    margin-top: 8vh;
+    min-height: 100vh;
+    margin-top: 4vh;
     box-sizing: border-box;
-    padding: 5%;
+    padding: 20px;
 }
+
 
 header nav ul{
     list-style: none;
@@ -94,8 +102,10 @@ form{
     padding: 20px;
     border-radius: 6px;
     background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 2px 2px 2px rgb(113, 113, 113),
-                inset 2px 2px 2px gray;
+    
+    box-shadow: -2px -2px 3px grey inset ,
+                0 0 8px grey,
+                2px 2px 4px white inset;
 }
 
 input[type="text"],input[type="password"] {
@@ -103,9 +113,9 @@ input[type="text"],input[type="password"] {
     border: none;
     outline: none;
     border-radius: 5px;
-    box-shadow: 1px 1px 1px black,
-                inset 1px 1px 1px whitesmoke;
-    background-color: rgba(255, 255, 255, 0);
+    box-shadow: -2px -2px 1px grey inset ,
+                0 1px 5px grey;
+                /* 2px 2px 4px white inset; */
     height: 30px;
     color: #fff;
     padding-left: 10px;

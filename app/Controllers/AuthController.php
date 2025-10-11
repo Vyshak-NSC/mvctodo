@@ -30,7 +30,7 @@ class AuthController extends Controller{
             $result = ['success' => false,'message'=> $message];
         }
 
-        $this->renderView('register', ['result'=>$result], stylePath:"auth");
+        $this->renderView('register', ['result'=>$result, 'stylePath'=>"auth"]);
     }
 
     public function login(){
@@ -63,7 +63,7 @@ class AuthController extends Controller{
             $result = ['success'=> $success,'message'=> $message];
         }
 
-        $this->renderView('login',  data:['result'=>$result], stylePath:"auth");
+        $this->renderView('login',  data:['result'=>$result, 'stylePath'=>"auth"]);
     }
 
     public function logout(){

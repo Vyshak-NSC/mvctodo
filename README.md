@@ -1,4 +1,4 @@
-# mvctodo – PHP MVC Todo Application
+# Todo Application
 
 ## Overview
 mvctodo is a lightweight PHP MVC (Model–View–Controller) application that demonstrates a basic to-do list system with authentication. It’s designed to show how to structure a small project with controllers, models, and views — while using clean URL routing and simple session-based login handling.
