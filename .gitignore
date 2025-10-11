@@ -1,0 +1,68 @@
+# ------------------------------
+# Core system and environment
+# ------------------------------
+.env
+.env.*
+config.php
+config/*.php
+database.sqlite
+*.log
+*.cache
+*.bak
+*.tmp
+
+# ------------------------------
+# IDEs and editors
+# ------------------------------
+.vscode/
+.idea/
+nbproject/
+*.sublime-project
+*.sublime-workspace
+
+# ------------------------------
+# OS-generated junk
+# ------------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+
+# ------------------------------
+# Dependency directories
+# ------------------------------
+vendor/
+node_modules/
+composer.lock
+package-lock.json
+
+# ------------------------------
+# Composer / PHP artifacts
+# ------------------------------
+composer.phar
+
+# ------------------------------
+# Build outputs / uploads
+# ------------------------------
+public/uploads/
+public/cache/
+public/storage/
+public/tmp/
+public/*.zip
+
+# ------------------------------
+# Logs
+# ------------------------------
+logs/
+storage/logs/
+*.log
+
+# ------------------------------
+# Miscellaneous
+# ------------------------------
+*.swp
+*.swo
+*.orig
+*.sql
+*.db
