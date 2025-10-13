@@ -19,7 +19,7 @@ class Controller{
         $style = "/". ($params["stylePath"] ?? '') ."/$view.css";
         $content = __DIR__ . "/../Views/$viewPath/$view.php";
 
-        $aside = $params['aside'] ? __DIR__ . '/../Views/sidebar.php' : null;
+        $aside = ($params['aside'] && User::isLoggedIn()) ? __DIR__ . '/../Views/sidebar.php' : null;
         require_once __DIR__ . "/../Views/layouts/main.php";
     }
 }

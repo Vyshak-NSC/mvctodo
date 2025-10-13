@@ -22,13 +22,7 @@ spl_autoload_register(function ($class){
 });
 
 
-
-$controller = "HomeController";
-$method = "home";
-
 $URL = $_GET['url'];
-
-
 $URL = explode('/', $URL);
 $filename = '../app/Controllers/'. ucfirst($URL[0]) . 'Controller.php';
 
@@ -48,6 +42,6 @@ if(file_exists($filename)){
     call_user_func_array([$controller, $method], []);
 }else{
     http_response_code(404);
-    // $content = __DIR__ . '/../app/Views/_404.php';
-    require __DIR__ . '/../app/Views/_404.php';
+    $content = __DIR__ . '/../app/Views/_404.php';
+    require __DIR__ . '/../app/Views/layouts/main.php';
 }

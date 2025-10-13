@@ -1,10 +1,12 @@
 .sidebar{
-    width: max-content;
+    width: 100%;
+    min-width: max-content;
 }
 
 .sidebar ul{
     list-style: none;
     padding: 10px;
+    margin-top: 0;
     border-radius: 4px;
     height: 100%;
     width: 100%;
@@ -18,22 +20,31 @@
 
 
 .sidebar ul li{
-    height: 20px;
+    height: 40px;
     opacity: 0.8;
     padding: 5px 10px;
+    display: flex;
+    align-items: center;
     transition: transform 0.2s ease;
     transform-origin: center;
     border-radius: 4px;
+    margin: 5px 0;
+    font-size: 18px;
 }
 
+.sidebar i{
+    padding-right: 10px;
+}
 .sidebar a{
     color: rgb(66, 58, 58);
+    width: 100%;
+    display: block;
 }
 
 .sidebar ul li:hover{
     opacity: 1;
     background-color: rgb(188, 188, 227);
 }
-.sidebar a:hover{
+.sidebar ul li:hover > a{
     color: rgb(36, 7, 253);
 }
