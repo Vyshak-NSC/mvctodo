@@ -48,6 +48,6 @@ if(file_exists($filename)){
     call_user_func_array([$controller, $method], []);
 }else{
     http_response_code(404);
-    $content = __DIR__ . '/../app/Views/_404.php';
-    require __DIR__ . '/../app/Views/layouts/main.php';
+    // $content = __DIR__ . '/../app/Views/_404.php';
+    require __DIR__ . '/../app/Views/_404.php';
 }

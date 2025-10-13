@@ -1,5 +1,3 @@
-@import url('./sidebar.css');
-
 body{
     /* background-color: rgb(44, 69, 106); */
     background-color: #eee;
@@ -14,7 +12,6 @@ body{
     box-sizing: border-box;
     margin: 5px;
     gap: 5px;
-    min-height: 100vh;
 }
 
 .no-sidemenu-body{
@@ -64,10 +61,10 @@ aside {grid-area: aside;}
 
 main, aside{
     width: 100%;
-    min-height: 100vh;
-    margin-top: 4vh;
+    margin-top: 7vh;
     box-sizing: border-box;
     padding: 20px;
+    min-height: 80vh;
 }
 
 
@@ -93,8 +90,8 @@ header nav a:hover{
     display: flex;
     max-width: 500px;
     flex-direction: column;
-    align-items: center;
 }
+
 form{
     display: flex;
     flex-direction: column;
@@ -117,7 +114,7 @@ input[type="text"],input[type="password"] {
                 0 1px 5px grey;
                 /* 2px 2px 4px white inset; */
     height: 30px;
-    color: #fff;
+    color: #222;
     padding-left: 10px;
 }
 
@@ -135,7 +132,6 @@ button {
 
 a{
     text-decoration: none;
-    color: rgba(0, 102, 255, 1);
 }
 
 #logout{

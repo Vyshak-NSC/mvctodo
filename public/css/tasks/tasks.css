@@ -1,6 +1,3 @@
-*{
-    box-sizing: border-box;
-}
 
 main{
     display: flex;
@@ -20,6 +17,8 @@ section .container{
     flex-direction: row;
     gap: 15px;
     flex-wrap: wrap;
+    padding: 10px;
+    justify-content: space-around;
 }
 
 section > p{
@@ -31,13 +30,11 @@ section > p{
 
 .task-item,
 .project-item{
+    flex: 1 1 250px;
     background:linear-gradient(135deg, rgb(236, 236, 236), white);
     color: black;
     border-radius: 10px;
     padding: 20px;
-    flex-shrink: 0;
-    min-width: 250px;
-
     box-shadow: -2px -2px 3px grey inset ,
                 0 0 8px grey,
                 2px 2px 4px white inset;
@@ -49,5 +46,4 @@ section > p{
     padding: 0;
     margin: 0;
     font-size: 1.3rem;
-    /* border-bottom: 1px solid black; */
 }

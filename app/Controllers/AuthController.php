@@ -11,7 +11,7 @@ class AuthController extends Controller{
             if(!CSRF::validateToken($_POST['csrf_token']?? '')){
                 $result = ['success'=>false, 'message'=> 'Security token invalid. Please try again.'];
 
-                $this->renderView('register', ['result'=>$result]);
+                $this->renderView('register', ['result'=>$result,'aside'=>false]);
                 exit;
             }
 
@@ -30,7 +30,7 @@ class AuthController extends Controller{
             $result = ['success' => false,'message'=> $message];
         }
 
-        $this->renderView('register', ['result'=>$result, 'stylePath'=>"auth"]);
+        $this->renderView('register', ['result'=>$result, 'stylePath'=>"auth",'aside'=>false]);
     }
 
     public function login(){
@@ -42,7 +42,7 @@ class AuthController extends Controller{
             // CSRF Validation
             if(!CSRF::validateToken($_POST['csrf_token']?? '')){
                 $result = ['success'=>false,'message'=> 'Security code invalid. Please try again'];
-                $this->renderView('login', ['result'=>$result]);
+                $this->renderView('login', ['result'=>$result,'aside'=>false]);
                 exit;
             }
 
@@ -63,7 +63,7 @@ class AuthController extends Controller{
             $result = ['success'=> $success,'message'=> $message];
         }
 
-        $this->renderView('login',  data:['result'=>$result, 'stylePath'=>"auth"]);
+        $this->renderView('login',  ['result'=>$result, 'stylePath'=>"auth",'aside'=>false]);
     }
 
     public function logout(){
