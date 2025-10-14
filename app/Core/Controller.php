@@ -1,10 +1,10 @@
 <?php
 
 class Controller{
-    protected $userModel;
+    protected $model;
 
     public function __construct($pdo){
-        $this->userModel = new User($pdo);
+        // $this->model = new User($pdo);
     }
 
     public function renderView(string $view, $params=[] ){
@@ -16,7 +16,7 @@ class Controller{
         extract($params);
         
         $viewPath = strtolower(str_replace("Controller","", get_class($this)));
-        $style = "/". ($params["stylePath"] ?? '') ."/$view.css";
+        $style = "/". ($stylePath ?? '') ."/$view.css";
         $content = __DIR__ . "/../Views/$viewPath/$view.php";
 
         $aside = ($params['aside'] && User::isLoggedIn()) ? __DIR__ . '/../Views/sidebar.php' : null;

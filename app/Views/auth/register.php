@@ -1,13 +1,14 @@
 <?php $pageTitle = 'Login'; ?>
 
-<?php if(!empty($result) && !empty($result['message'])) :?>
-    <p style="color: <?= $result['success'] ? 'green' : 'red'; ?>">
-        <?= $result['message']; ?>
-    </p>
-<?php endif; ?>
+
     
 <div class="auth-form">
     <h1>Register</h1>
+    <?php if(!empty($result) && !empty($result['message'])) :?>
+        <p style="color: <?= $result['success'] ? 'green' : 'red'; ?>;">
+            <?= $result['message']; ?>
+        </p>
+    <?php endif; ?>
     <form method="post" action="<?= BASE_URL; ?>auth/register">
         <input type="hidden" name="csrf_token" value="<?= CSRF::generateToken(); ?>">
         

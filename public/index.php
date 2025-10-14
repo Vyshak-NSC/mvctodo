@@ -21,6 +21,8 @@ spl_autoload_register(function ($class){
     }
 });
 
+$controller = "DashboardController";
+$method = "index";
 
 $URL = $_GET['url'];
 $URL = explode('/', $URL);
@@ -29,8 +31,8 @@ $filename = '../app/Controllers/'. ucfirst($URL[0]) . 'Controller.php';
 if(file_exists($filename)){
     require_once $filename;
     $controller = ucfirst($URL[0]) . 'Controller';
-    $method = $URL[1] ?? 'index';
-    
+    $method = !empty($URL[1]) ? $URL[1] : 'index';
+
     if(!method_exists($controller, $method)){
         http_response_code(404);
         require_once __DIR__ . '/../app/Views/_404.php';
@@ -38,7 +40,6 @@ if(file_exists($filename)){
     }
     
     $controller = new $controller($pdo);
-
     call_user_func_array([$controller, $method], []);
 }else{
     http_response_code(404);

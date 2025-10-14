@@ -1,6 +1,11 @@
 <?php
 
 class AuthController extends Controller{
+    private $userModel;
+    public function __construct($pdo){
+        $this->userModel = new User($pdo);
+    }
+
     public function register(){
         if(User::isLoggedIn()){
             header("Location: {BASE_URL}/home/index");
@@ -22,7 +27,8 @@ class AuthController extends Controller{
             
             if($result['success']){
                 $message = urlencode($result['message']);
-                header('Location:' .BASE_URL . 'auth/login&message=' . $message);
+                $this->login();
+                // header('Location:' .BASE_URL . 'auth/login&message=' . $message);
                 exit;
             }
         }else{
@@ -42,7 +48,7 @@ class AuthController extends Controller{
             // CSRF Validation
             if(!CSRF::validateToken($_POST['csrf_token']?? '')){
                 $result = ['success'=>false,'message'=> 'Security code invalid. Please try again'];
-                $this->renderView('login', ['result'=>$result,'aside'=>false]);
+                $this->renderView('login', ['result'=>$result, 'stylePath'=>"auth",'aside'=>false]);
                 exit;
             }
 
@@ -53,7 +59,7 @@ class AuthController extends Controller{
             
             if($result['success']){
                 $message = $result['message'];
-                header('Location:'. BASE_URL .'home/index'); 
+                header('Location:'. BASE_URL .'dashboard/index'); 
                 exit;
             }
         }else{
@@ -69,7 +75,7 @@ class AuthController extends Controller{
     public function logout(){
         $result = $this->userModel->logout();
         $message = $result['message'] ?? 'Logged out';
-        header('Location:' . BASE_URL .'home?message=' . urlencode($message));
+        $this->renderView('login',  ['result'=>$result, 'message'=>$message , 'stylePath'=>"auth",'aside'=>false]);
         exit;
     }
 }

@@ -1,5 +1,5 @@
-<div>
-    <p>Welcome, <?= $_SESSION['username'] ?></p>
+
+    <!-- <p>Welcome, <?= $_SESSION['username']?? 'Guest' ?></p> -->
     <section>
         <p>Projects</p>
         <div class="container">
@@ -102,4 +102,3 @@
             </div>
         </div>
     </section>
-</div>

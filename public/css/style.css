@@ -12,6 +12,7 @@ body{
     box-sizing: border-box;
     margin: 5px;
     gap: 5px;
+    overflow-y: scroll;
 }
 
 .no-sidemenu-body{
@@ -60,7 +61,6 @@ main  {
 aside {grid-area: aside;}
 
 main, aside{
-    width: 100%;
     margin-top: 7vh;
     box-sizing: border-box;
     padding: 20px;
@@ -90,6 +90,15 @@ header nav a:hover{
     display: flex;
     max-width: 500px;
     flex-direction: column;
+    text-align: center;
+}
+
+.auth-form h1{
+    margin-bottom: 0px;
+}
+
+.auth-form form{
+    margin-top: 10px;
 }
 
 form{
