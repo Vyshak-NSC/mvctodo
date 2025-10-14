@@ -6,13 +6,12 @@ class TasksController extends Controller{
         $this->taskModel = new Tasks($pdo);
     }
     public function index(){
-        $result = $this->taskModel->getAllTasks();
+        $userId = User::currentUserID();
+        $result = $this->taskModel->getAllTasks($userId);
         $tasks = $result['data'] ?? [];
         $message = $result['message'] ?? '';
         $this->renderView('Tasks', 
         [
-            'success'=> $result['success'],
-            'message'=> $message,
             'tasks'=>$tasks,
             'stylePath'=>'tasks',
         ]);

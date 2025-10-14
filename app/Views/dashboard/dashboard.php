@@ -1,104 +1,32 @@
-
-    <!-- <p>Welcome, <?= $_SESSION['username']?? 'Guest' ?></p> -->
-    <section>
-        <p>Projects</p>
-        <div class="container">
+<p>Welcome, <?= $_SESSION['username'] ?? '' ?></p>
+<section>
+    <p>Recent Projects</p>
+    <div class="container">
+    <?php if(!empty($recentProjects)) :?>
+        <?php foreach($recentProjects as $project) :?>
             <div class="project-item">
-                <p class="project-title">Project 1</p>
+                <p class="project-title"><?= htmlspecialchars($project['name']) ?></p>
                 <div class="project-content">
-                    <p>This is Task body</p>
+                    <p><?= $project['description'] ?></p>
                 </div>
             </div>
-            <div class="project-item">
-                <p class="project-title">Project 1</p>
-                <div class="project-content">
-                    <p>This is Task body</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <?php endforeach ;?>
+    <?php endif ?>  
+</div>
+</section>
 
-    <section>
-        <p>My tasks</p>
-        <div class="container">
+<section>
+    <p>Recent tasks</p>
+    <div class="container">
+    <?php if(!empty($recentTasks)) :?>
+        <?php foreach($recentTasks as $task) :?>
             <div class="task-item">
-                <p class="task-title">Task title</p>
+                <p class="task-title"><?= htmlspecialchars($task['title']) ?></p>
                 <div class="task-content">
-                    <p>This is Task body</p>
+                    <p><?= $task['description'] ?></p>
                 </div>
             </div>
-            
-            <div class="task-item">
-                <p class="task-title">Task title</p>
-                <div class="task-content">
-                    <p>This is Task body</p>
-                </div>
-            </div>
-            <div class="task-item">
-                <p class="task-title">Task title</p>
-                <div class="task-content">
-                    <p>This is Task body</p>
-                </div>
-            </div>
-            
-            <div class="task-item">
-                <p class="task-title">Task title</p>
-                <div class="task-content">
-                    <p>This is Task body</p>
-                </div>
-            </div>
-            <div class="task-item">
-                <p class="task-title">Task title</p>
-                <div class="task-content">
-                    <p>This is Task body</p>
-                </div>
-            </div>
-            
-            <div class="task-item">
-                <p class="task-title">Task title</p>
-                <div class="task-content">
-                    <p>This is Task body</p>
-                </div>
-            </div>
-            
-            <div class="task-item">
-                <p class="task-title">Task title</p>
-                <div class="task-content">
-                    <p>This is Task body</p>
-                </div>
-            </div>
-            <div class="task-item">
-                <p class="task-title">Task title</p>
-                <div class="task-content">
-                    <p>This is Task body</p>
-                </div>
-            </div>
-            
-            <div class="task-item">
-                <p class="task-title">Task title</p>
-                <div class="task-content">
-                    <p>This is Task body</p>
-                </div>
-            </div>
-
-            <div class="task-item">
-                <p class="task-title">Task title</p>
-                <div class="task-content">
-                    <p>This is Task body</p>
-                </div>
-            </div>
-            <div class="task-item">
-                <p class="task-title">Task title</p>
-                <div class="task-content">
-                    <p>This is Task body</p>
-                </div>
-            </div>
-            
-            <div class="task-item">
-                <p class="task-title">Task title</p>
-                <div class="task-content">
-                    <p>This is Task body</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <?php endforeach ;?>
+    <?php endif ?>
+</div>
+</section>

@@ -89,6 +89,10 @@ class User{
     public static function currentUser(){
         return self::isLoggedIn() ? $_SESSION['username'] : null;
     }
+    
+    public static function currentUserID(){
+        return self::isLoggedIn() ? $_SESSION['id'] : null;
+    }
 
     public function getById(int $id){
         $stmt = $this->pdo->prepare("SELECT id,username FROM users WHERE id =?");

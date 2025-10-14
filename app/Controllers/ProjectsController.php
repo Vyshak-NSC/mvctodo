@@ -6,14 +6,13 @@ class ProjectsController extends Controller{
         $this->projectModel = new Projects($pdo);
     }
     public function index(){
-        $result = $this->projectModel->getAllProjects();
+        $userId = User::currentUserID();
+        $result = $this->projectModel->getAllProjects($userId);
         $projects = $result['data'] ?? [];
         $message = $result['message'] ?? '';
         
         $this->renderView('projects', 
         [
-            'success'=> $result['success'],
-            'message'=> $message,
             'projects'=>$projects,
             'stylePath'=>'projects',
         ]);
