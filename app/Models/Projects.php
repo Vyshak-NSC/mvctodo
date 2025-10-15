@@ -28,13 +28,28 @@ class Projects{
         }
     }
 
+    public function getElapsedTime($datetime){
+        $now = new DateTime();
+        $createdTime = new DateTime($datetime);
+        $diff = $now->diff($createdTime);
+        echo "<br><br><br></br><br><pre>";
+        print_r($diff);
+        echo "</pre>";
+        return $diff->format("$diff->d days ago");
+    }
+
     public function getRecentProjects($userId,$limit =  10){
-        $query = "SELECT name,description, task_count FROM projects WHERE user_id = :user_id ORDER BY updated_at DESC LIMIT " . (int)$limit;
+        $query = "SELECT * FROM projects WHERE user_id = :user_id ORDER BY updated_at DESC LIMIT " . (int)$limit;
         $stmt = $this->pdo->prepare($query);
         $stmt->execute(['user_id' => $userId]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         if($result){
+            $result = array_map(function($project){
+                $project['elapsed_time'] = $this->getElapsedTime(($project['created_at']));
+                return $project;
+            }, $result);
+
             return ['success'=>true, 'data'=>$result];
         }
     }

@@ -28,6 +28,7 @@ $URL = $_GET['url'];
 $URL = explode('/', $URL);
 $filename = '../app/Controllers/'. ucfirst($URL[0]) . 'Controller.php';
 
+
 if(file_exists($filename)){
     require_once $filename;
     $controller = ucfirst($URL[0]) . 'Controller';

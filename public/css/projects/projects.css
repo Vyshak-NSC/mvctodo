@@ -41,10 +41,33 @@ section > p{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.task-item .task-title,
-.project-item .project-title{
+.task-title,
+.project-title{
     font-weight: bold;
     padding: 0;
     margin: 0;
     font-size: 1.3rem;
+}
+
+.project-item .faded{
+    color: grey;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.project-progress-label{
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-progress-label p{
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.project-item progress{
+    width: 100%;
 }
