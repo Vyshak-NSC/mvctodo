@@ -14,6 +14,11 @@ class Projects{
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if($result){
+            $result = array_map(function($project){
+                $project['elapsed_time'] = $this->getElapsedTime(($project['created_at']));
+                return $project;
+            }, $result);
+
             return ['success'=>true, 'data'=>$result];
         }
     }
@@ -24,18 +29,13 @@ class Projects{
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if($result){
+            $result = array_map(function($project){
+                $project['elapsed_time'] = $this->getElapsedTime(($project['created_at']));
+                return $project;
+            }, $result);
+
             return ['success'=>true, 'data'=>$result];
         }
-    }
-
-    public function getElapsedTime($datetime){
-        $now = new DateTime();
-        $createdTime = new DateTime($datetime);
-        $diff = $now->diff($createdTime);
-        echo "<br><br><br></br><br><pre>";
-        print_r($diff);
-        echo "</pre>";
-        return $diff->format("$diff->d days ago");
     }
 
     public function getRecentProjects($userId,$limit =  10){
@@ -52,5 +52,33 @@ class Projects{
 
             return ['success'=>true, 'data'=>$result];
         }
+    }
+
+    public function getElapsedTime($datetime){
+        $now = new DateTime();
+        $createdTime = new DateTime($datetime);
+
+        $diff = $now->diff($createdTime);
+        $weeks = floor($diff->d / 7);
+        $diff->d %= 7;
+        $diff->w = $weeks;
+
+        $units = [
+            'y' => 'year',
+            'm' => 'month',
+            'w' => 'week',
+            'd' => 'day',
+            'h' => 'hour',
+            'i' => 'minute',
+            's' => 'second',
+        ];
+
+        foreach($units as $key => $value){
+            if($diff->$key){
+                $message = $diff->$key . rtrim($key,'s');
+                break;
+            }
+        }
+        return $diff->format("$message ago");
     }
 }

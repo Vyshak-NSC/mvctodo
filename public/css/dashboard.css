@@ -41,10 +41,14 @@ section > p{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.project-item .faded{
+.faded{
     color: grey;
     font-size: 0.9rem;
     margin: 0;
+}
+
+.faded i{
+    margin: 05px;
 }
 
 .task-title,
@@ -69,5 +73,38 @@ section > p{
 }
 
 .project-item progress{
+    -webkit-appearance: none;
+    -mozappearance: none;
+    appearance: none;
+
     width: 100%;
+    height: 10px;
+    border: none;
+}
+
+.project-item progress::-webkit-progress-bar{
+    background-color: rgb(194, 194, 248);
+}
+
+.project-item progress::-webkit-progress-value{
+    background-color: rgb(98, 98, 237);
+}
+
+.project-item progress::-webkit-progress-bar,
+.project-item progress::-webkit-progress-value{
+    border: none;
+    border-radius: 20px;
+}
+
+.faded i{
+    margin: 5px;
+}
+
+.task-content{
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+.task-item .elapsed-time{
+    margin-top: auto;
 }

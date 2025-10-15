@@ -35,6 +35,8 @@ section > p{
     border-radius: 10px;
     padding: 20px;
     min-height: 100px;
+    display: flex;
+    flex-direction: column;
     /* box-shadow: -1px -1px 3px grey inset ,
                 0 0 4px grey,
                 2px 2px 2px white inset; */
@@ -47,4 +49,23 @@ section > p{
     padding: 0;
     margin: 0;
     font-size: 1.3rem;
+}
+
+.faded{
+    color: grey;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.faded i{
+    margin: 5px;
+}
+
+.task-content{
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+.task-item .elapsed-time{
+    margin-top: auto;
 }

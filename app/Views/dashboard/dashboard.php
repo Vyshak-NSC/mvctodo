@@ -18,8 +18,8 @@
                     <progress value="<?= $project['progress_percent']?>" max="100" ></progress>
                     
                     <p><?= $project['description'] ?></p>
-                    <p class="faded"><?= $project['elapsed_time'] ?></p>
                 </div>
+                <p class="faded elapsed-time"><i class="fa fa-clock"></i><?= $project['elapsed_time'] ?></p>
 
             </div>
         <?php endforeach ;?>
@@ -32,12 +32,14 @@
     <div class="container">
     <?php if(!empty($recentTasks)) :?>
         <?php foreach($recentTasks as $task) :?>
-            <div class="task-item">
-                <p class="task-title"><?= htmlspecialchars($task['title']) ?></p>
-                <div class="task-content">
-                    <p><?= $task['description'] ?></p>
+            <div class="project-item">
+                    <h3 class="project-title"><?= htmlspecialchars($task['title']) ?></h3>
+                    <span class="faded"><?= htmlspecialchars($task['status']) ?></span>
+                    <div class="task-content">
+                        <p><?= $task['description'] ?></p>
+                    </div>
+                    <p class="faded elapsed-time"><i class="fa fa-clock"></i> <?= $task['elapsed_time'] ?></p>
                 </div>
-            </div>
         <?php endforeach ;?>
     <?php endif ?>
 </div>
