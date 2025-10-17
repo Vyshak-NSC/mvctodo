@@ -7,6 +7,10 @@ class ProjectsController extends Controller{
     }
     public function index(){
         $userId = User::currentUserID();
+        if(!$userId){
+            header("Location: ".BASE_URL."auth/login?message=Please+login+to+access+the+dashboard");
+            exit;
+        }
         $result = $this->projectModel->getAllProjects($userId);
         $projects = $result['data'] ?? [];
         $message = $result['message'] ?? '';

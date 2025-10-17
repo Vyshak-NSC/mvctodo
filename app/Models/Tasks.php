@@ -29,7 +29,7 @@
         }
 
         public function getAllTasks($userId){
-            $stmt = $this->pdo->prepare("Select * from tasks where user_id = :user_id");
+            $stmt = $this->pdo->prepare("Select * from tasks where user_id = :user_id and project_id IS NULL");
             $stmt->execute(['user_id' => $userId]);
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

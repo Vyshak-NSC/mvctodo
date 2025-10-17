@@ -7,6 +7,10 @@ class TasksController extends Controller{
     }
     public function index(){
         $userId = User::currentUserID();
+        if(!$userId){
+            header("Location: ".BASE_URL."auth/login?message=Please+login+to+access+the+dashboard");
+            exit;
+        }
         $result = $this->taskModel->getAllTasks($userId);
         $tasks = $result['data'] ?? [];
         $message = $result['message'] ?? '';

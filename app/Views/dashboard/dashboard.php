@@ -12,7 +12,7 @@
 </section>
 
 <section>
-    <p>Recent tasks</p>
+    <h2>Recent tasks</h2>
     <div class="container">
     <?php if(!empty($recentTasks)) :?>
         <?php foreach($recentTasks as $task)

@@ -12,7 +12,10 @@ class DashboardController extends Controller{
 
     public function index(){
         $userId = User::currentUserID();
-
+        if(!$userId){
+            header("Location: ".BASE_URL."auth/login?message=Please+login+to+access+the+dashboard");
+            exit;
+        }
         $taskResult = $this->taskModel->getRecentTasks($userId,8);
         $recentTasks = $taskResult['data'] ?? [];
         
