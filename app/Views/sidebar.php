@@ -1,5 +1,6 @@
 <div class="sidebar">
     <h3><i class="fas fa-clipboard-list"></i>Task manager</h3>
+    <?php $page = explode('/',$_GET['url'])[0] ;?>
     <ul>
         <li class="<?= $page == 'dashboard' ? 'active':'' ?>"><a href="<?= BASE_URL; ?>dashboard"><i class="fas fa-home"></i>Dashboard</a></li>
         <li class="<?= $page == 'projects' ? 'active':'' ?>"><a href="<?= BASE_URL; ?>projects"><i class="fas fa-folder"></i>Projects</a></li>
