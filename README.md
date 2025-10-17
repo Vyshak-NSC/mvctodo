@@ -31,7 +31,7 @@ tests/
 ## Setup
 1. **Clone or extract** the repository into your web server’s root:
    ```bash
-   git clone https://github.com/yourname/mvctodo.git
+   git clone https://github.com/Vyshak-NSC/mvctodo.git
    ```
    or copy the extracted folder into `/htdocs/mvctodo/` or `/var/www/html/mvctodo/`.
 
@@ -42,7 +42,7 @@ tests/
 3. **Configure database connection**  
    Edit `config/db.php` to include your MySQL credentials:
    ```php
-   $db = new PDO('mysql:host=localhost;dbname=mvctodo', 'username', 'password');
+   $pdo = new PDO('mysql:host=localhost;dbname=mvctodo', 'username', 'password');
    ```
 
 4. **Set base URL**  
