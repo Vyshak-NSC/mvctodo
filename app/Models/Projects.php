@@ -56,8 +56,9 @@ class Projects{
 
     public function getElapsedTime($datetime){
         $now = new DateTime();
-        $createdTime = new DateTime($datetime);
-
+        $timezone = new DateTimeZone('Asia/kolkata');
+        $createdTime = new DateTime($datetime,$timezone);
+        
         $diff = $now->diff($createdTime);
         $weeks = floor($diff->d / 7);
         $diff->d %= 7;
@@ -75,10 +76,11 @@ class Projects{
 
         foreach($units as $key => $value){
             if($diff->$key){
-                $message = $diff->$key . rtrim($key,'s');
+                $plural = ($diff->$key > 1)? 's' : '';
+                $message = $diff->$key . ' ' .$value . $plural;
                 break;
             }
         }
-        return $diff->format("$message ago");
+        return "$message ago";
     }
 }

@@ -10,10 +10,12 @@ class TasksController extends Controller{
         $result = $this->taskModel->getAllTasks($userId);
         $tasks = $result['data'] ?? [];
         $message = $result['message'] ?? '';
-        $this->renderView('Tasks', 
+        
+        $this->renderView('tasks', 
         [
             'tasks'=>$tasks,
             'stylePath'=>'tasks',
+            'components'=>['tasks']
         ]);
     }   
 }

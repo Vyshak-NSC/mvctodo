@@ -15,6 +15,7 @@ class ProjectsController extends Controller{
         [
             'projects'=>$projects,
             'stylePath'=>'projects',
+            'components'=>['projects']
         ]);
     }   
 }

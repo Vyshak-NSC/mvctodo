@@ -1,17 +1,9 @@
 <section>
-    <h2>My tasks</h2>
+    <h1>My tasks</h1>
     <div class="container">
-        <?php if(!empty($tasks)) :?>
-            <?php foreach($tasks as $task) :?>
-                <div class="project-item">
-                    <h3 class="project-title"><?= htmlspecialchars($task['title']) ?></h3>
-                    <span class="faded"><?= htmlspecialchars($task['status']) ?></span>
-                    <div class="task-content">
-                        <p><?= $task['description'] ?></p>
-                    </div>
-                    <p class="faded elapsed-time"><i class="fa fa-clock"></i><?= $task['elapsed_time'] ?></p>
-                </div>
-            <?php endforeach ;?>
-        <?php endif ?>
+        <?php if(!empty($tasks))
+            foreach($tasks as $task) 
+                include(VIEW_PATH.'/components/_task_card.php'); 
+        ?>
     </div>
 </section>

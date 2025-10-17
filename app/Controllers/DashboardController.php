@@ -13,7 +13,7 @@ class DashboardController extends Controller{
     public function index(){
         $userId = User::currentUserID();
 
-        $taskResult = $this->taskModel->getRecentTasks($userId,5);
+        $taskResult = $this->taskModel->getRecentTasks($userId,8);
         $recentTasks = $taskResult['data'] ?? [];
         
         $projectResult = $this->projectModel->getRecentProjects($userId,5);
@@ -22,6 +22,7 @@ class DashboardController extends Controller{
         $this->renderView("dashboard", [
             'recentTasks' => $recentTasks,
             'recentProjects' => $recentProjects,
+            'components'=>['projects','tasks']
         ] );
     }
 }

@@ -1,0 +1,80 @@
+.task-item{
+    background:linear-gradient(135deg, rgb(236, 236, 236), white);
+    color: black;
+    border-radius: 10px;
+    padding: 20px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.task-title{
+    font-weight: bold;
+    padding: 0;
+    margin: 5px 0;
+    font-size: 1.3rem;
+}
+
+.faded{
+    color: grey;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.faded i{
+    margin: 5px;
+}
+
+.task-content{
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.task-item .elapsed-time{
+    margin-top: auto;
+}
+
+.project-name{
+    background-color: lightgray;
+    color: black;
+}
+.on-hold{
+    background-color: rgb(250, 187, 187);
+    color: rgb(245, 55, 55);
+}
+.pending{
+    background-color: rgb(250, 230, 180);
+    color: rgb(228, 131, 13);
+}
+.in-progress{
+    background-color: blue;
+    color: white;
+}
+.completed{
+    background-color: green;
+    color: white;
+}
+.deferred{
+    background-color: rgb(188, 188, 188);
+    color: rgb(72, 72, 72);
+}
+
+.pending,
+.completed,
+.on-hold,
+.in-progress,
+.deferred,
+.project-name{
+    text-transform: capitalize;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    width: fit-content;
+    margin: 5px 0;
+}
+.project-name{
+    border-radius: 5px;
+}

@@ -146,3 +146,21 @@ a{
 #logout{
     color: rgb(225, 5, 5);
 }   
+
+
+section{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    margin-bottom: 20px;
+}
+
+section .container{
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
