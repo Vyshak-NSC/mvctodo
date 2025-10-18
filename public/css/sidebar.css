@@ -47,7 +47,7 @@
 .sidebar ul li:hover,
 .sidebar ul li.active{
     opacity: 1;
-    background-color: rgb(188, 188, 227);
+    background-color: rgb(210, 210, 235);
 }
 .sidebar ul li:hover > a,
 .sidebar ul li.active > a{

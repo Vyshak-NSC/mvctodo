@@ -2,8 +2,11 @@
 
 class ProjectsController extends Controller{
     private $projectModel;
+    private $taskModel;
+
     public function __construct($pdo){
         $this->projectModel = new Projects($pdo);
+        $this->taskModel = new Tasks($pdo);
     }
     public function index(){
         $userId = User::currentUserID();
@@ -30,6 +33,16 @@ class ProjectsController extends Controller{
             exit;
         }
 
-        $project = $this->projectModel->getProjectById($projectId);
+        $projectResult = $this->projectModel->getProjectById($projectId);
+        $taskResult = $this->taskModel->getTasksByProjectId($projectId);
+
+        if($projectResult['success'] && $taskResult['success']){
+            $this->renderView('show',
+            [
+                'project'=>$projectResult['data'],
+                'tasks'=>$taskResult['data'],
+                'stylePath'=>'projects',
+            ]);
+        }
     }
 }

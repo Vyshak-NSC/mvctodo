@@ -1,52 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Single Flip Book</title>
-    <style>
-        body{
-            background-color: black;
-            display: flex;
-            height: 90vh;
-            align-items: center;
-            justify-content: center;
-        }
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-        .book-container{
-            width: 400px;
-            height:400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: grey;
-            perspective: 1000px;
-        }
+require 'vendor/autoload.php'; // after installing PHPMailer via Composer
 
-        .page{
-            width: 150px;
-            height: 200px;
-            background-color: white;
-            transform-style: preserve-3d;
-            position: absolute;
-            transform: rotateY(0);
-            transition: transform 1s ease;
-            transform-origin: left center;
-        }
+$mail = new PHPMailer(true);
 
-        .book-container:hover .page{
-            transform: rotateY(-180deg);
-        }
-        
-    </style>
-</head>
-<body>
+try {
+//Server settings
+$mail->isSMTP();
+$mail->Host = 'smtp.gmail.com'; // your SMTP server
+$mail->SMTPAuth = true;
+$mail->Username = 'vyshaknsc02@gmail.com';
+$mail->Password = 'your-app-password'; // Gmail requires app password
+$mail->SMTPSecure = 'ssl';
+$mail->Port = 465;
 
-    <div class="book-container">
-        <div class="page">
-            Page 1 Content (Hover to flip)
-        </div>
-    </div>
+//Recipients
+$mail->setFrom('vyshaknsc02@gmail.com', 'Your Name');
+$mail->addAddress('vyshaknsc02@gmail.com', 'Recipient Name');
 
-</body>
-</html>
+//Content
+$mail->isHTML(true);
+$mail->Subject = 'Test Email';
+$mail->Body    = '<h1>Hello!</h1><p>This is a test email.</p>';
+
+$mail->send();
+echo 'Email sent successfully';
+} catch (Exception $e) {
+echo "Mailer Error: {$mail->ErrorInfo}";
+}

@@ -9,19 +9,16 @@ class Projects{
 
     public function getProjectById($projectId){
         $projectId = trim($projectId);
+        
         $stmt = $this->pdo->prepare("Select * from projects where project_id = ?");
         $stmt->execute([$projectId]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        echo "<pre>";
-        print_r($result);
-        echo "</pre>";
-        exit;
+        // echo "<pre>";
+        // print_r($result);
+        // echo "</pre>";
+        // exit;
         if($result){
-            $result = array_map(function($project){
-                $project['elapsed_time'] = $this->getElapsedTime(($project['created_at']));
-                return $project;
-            }, $result);
-
+            $result['elapsed_time'] = $this->getElapsedTime(($result['created_at']));
             return ['success'=>true, 'data'=>$result];
         }
     }
@@ -61,6 +58,8 @@ class Projects{
         $now = new DateTime();
         $timezone = new DateTimeZone('Asia/kolkata');
         $createdTime = new DateTime($datetime,$timezone);
+        
+        $message = 'Just now';
         
         $diff = $now->diff($createdTime);
         $weeks = floor($diff->d / 7);

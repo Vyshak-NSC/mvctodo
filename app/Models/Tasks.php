@@ -61,6 +61,21 @@
             }
         }
 
+        public function getTasksByProjectId($projectId){
+            $stmt = $this->pdo->prepare("SELECT * FROM tasks WHERE project_id = ?");
+            $stmt->execute([$projectId]);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if($result){
+                $result = array_map(function($task){
+                    $task['elapsed_time'] = $this->getElapsedTime(($task['created_at']));
+                    $task['project_name'] = $this->getParentProject($task['task_id'])['name'] ?? 'No Project';
+                    return $task;
+                }, $result);
+                return ['success'=>true, 'data'=>$result];
+            }
+        }
+
         public function getElapsedTime($datetime){
             $now = new DateTime();
             $timezone = new DateTimeZone('Asia/kolkata');
