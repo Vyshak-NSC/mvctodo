@@ -22,4 +22,14 @@ class ProjectsController extends Controller{
             'components'=>['projects']
         ]);
     }   
+
+    public function show($projectId){
+        $userId = User::currentUserID();
+        if(!$userId){
+            header("Location: ".BASE_URL."auth/login?message=Please+login+to+access+the+dashboard");
+            exit;
+        }
+
+        $project = $this->projectModel->getProjectById($projectId);
+    }
 }

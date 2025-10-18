@@ -33,6 +33,7 @@ if(file_exists($filename)){
     require_once $filename;
     $controller = ucfirst($URL[0]) . 'Controller';
     $method = !empty($URL[1]) ? $URL[1] : 'index';
+    $params = array_slice($URL, 2);
 
     if(!method_exists($controller, $method)){
         http_response_code(404);
@@ -41,7 +42,7 @@ if(file_exists($filename)){
     }
     
     $controller = new $controller($pdo);
-    call_user_func_array([$controller, $method], []);
+    call_user_func_array([$controller, $method], $params);
 }else{
     http_response_code(404);
     $content = __DIR__ . '/../app/Views/_404.php';

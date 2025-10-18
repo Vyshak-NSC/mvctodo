@@ -9,6 +9,13 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+.project-item a{
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 .project-title{
     font-weight: bold;
     padding: 0;
@@ -45,7 +52,7 @@
     font-weight: bold;
 }
 
-.project-item progress{
+.project-item a progress{
     -webkit-appearance: none;
     -mozappearance: none;
     appearance: none;
@@ -55,20 +62,20 @@
     border: none;
 }
 
-.project-item progress::-webkit-progress-bar{
+.project-item a progress::-webkit-progress-bar{
     background-color: rgb(194, 194, 248);
 }
 
-.project-item progress.no-progress::-webkit-progress-bar{
+.project-item a progress.no-progress::-webkit-progress-bar{
     background-color: rgb(250, 187, 187);
 }
 
-.project-item progress::-webkit-progress-value{
+.project-item a progress::-webkit-progress-value{
     background-color: rgb(98, 98, 237);
 }
 
-.project-item progress::-webkit-progress-bar,
-.project-item progress::-webkit-progress-value{
+.project-item a progress::-webkit-progress-bar,
+.project-item a progress::-webkit-progress-value{
     border: none;
     border-radius: 20px;
 }

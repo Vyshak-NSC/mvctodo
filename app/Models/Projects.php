@@ -7,12 +7,15 @@ class Projects{
         $this->pdo = $pdo;
     }
 
-    public function getProjects($id){
-        $id = trim($id);
-        $stmt = $this->pdo->prepare("Select * from projects where id = ?");
-        $stmt->execute([$id]);
+    public function getProjectById($projectId){
+        $projectId = trim($projectId);
+        $stmt = $this->pdo->prepare("Select * from projects where project_id = ?");
+        $stmt->execute([$projectId]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
+        echo "<pre>";
+        print_r($result);
+        echo "</pre>";
+        exit;
         if($result){
             $result = array_map(function($project){
                 $project['elapsed_time'] = $this->getElapsedTime(($project['created_at']));
